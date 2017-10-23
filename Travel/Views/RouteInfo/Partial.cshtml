@@ -1,0 +1,43 @@
+﻿
+@model Travel.Models.BusViewModel
+
+
+@{
+    //ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Online Bus Ticket Booking System</h2>
+    <p class="lead"> Widest number of travel options across thousands of routes.</p>
+    @*<p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>*@
+</div>
+
+
+<div class="source">
+    <h3> Source: </h3>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+
+        @Html.DropDownListFor(m => m.C_id, new SelectList(Model.citylist, "C_id", "City"))
+    }
+</div>
+
+
+
+<div class="destination">
+    <h3> Destination: </h3>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+
+        @Html.DropDownListFor(m => m.C_id, new SelectList(Model.citylist, "C_id", "City"))
+    }
+</div>
+
+
+<div>
+    <h2> </h2>
+    <button id="search" onclick="window.location.href ='/detail/index'"> Search Buses </button>
+
+</div>
+
+

@@ -1,0 +1,34 @@
+﻿@model Travel.Models.Table_day
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_day</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.A_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.A_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_route.R_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_route.R_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Day }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

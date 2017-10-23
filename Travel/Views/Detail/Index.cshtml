@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Travel.Models.Table_bus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+@if(User.IsInRole("Admin"))
+{ 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>   
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.B_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available_Seats)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Table_day.Day)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Table_route.R_id)
+        </th>
+        <th></th>
+    </tr>
+
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.B_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Available_Seats)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Table_day.Day)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Table_route.R_id)
+        </td>
+        <td>
+  
+            @if (User.IsInRole("Admin"))
+            { @Html.ActionLink("Edit", "Edit", new { id=item.B_id })}
+           
+            @if (User.IsInRole("Admin")) { @Html.ActionLink("Details", "Details", new { id=item.B_id }) }
+            
+            @if (User.IsInRole("Admin")) {@Html.ActionLink("Delete", "Delete", new { id=item.B_id }) <br />}
+                                                                                                     
+
+                                                                                                     
+            @Html.ActionLink("Book Ticket", "SeatInfo", new { id = item.B_id }) 
+            
+
+            
+
+
+        </td>
+    </tr>
+
+    
+}
+
+</table>

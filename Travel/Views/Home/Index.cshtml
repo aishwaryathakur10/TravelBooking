@@ -1,0 +1,115 @@
+﻿@*@model Travel.Models.RouteViewModel*@
+@model Travel.Models.SearchBusModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div >
+    <h2><b>Online Bus Ticket Booking System</b></h2>
+    <p class="lead"><b> Widest number of travel options across thousands of routes. </b></p>
+    @*<p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>*@
+</div>
+
+
+<div id="routeinfo">
+    <br /><br />
+    <h2> <b>Choose the Route: </b></h2>
+    @using (Html.BeginForm("Index","Home", FormMethod.Post))
+    {
+      @Html.DropDownListFor(m => m.routemodel.R_id, new SelectList(Model.routemodel.routelist, "R_id", "R_Name"))
+    
+    <h2></h2>
+          <button id="search" onclick="@("window.location.href='" + @Url.Action("Index", "Home") + "'");"> Search Buses </button>
+
+
+    
+
+    }
+</div>
+
+
+<br /><br />
+
+<table class="table" style="background-color: #FFFFFF">
+    <tr>
+        <th>
+            BusNAme
+        </th>
+        <th>
+            Time
+        </th>
+        <th>
+            Available Seats
+        </th>
+        <th>
+            Day
+        </th>
+        <th>
+            Route Id
+        </th>
+        <th></th>
+    </tr>
+
+    
+
+    @if (Model.buslist != null)
+{
+    foreach (var item in Model.buslist)
+    {
+        <tr style="background-color: #FFFFFF">
+            <td>
+                @Html.DisplayFor(modelItem => item.B_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available_Seats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Table_day.Day)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Table_route.R_id)
+            </td>
+            <td>
+
+                @*@if (User.IsInRole("Admin"))
+                { @Html.ActionLink("Edit", "Edit", new { id = item.B_id })}
+
+                @if (User.IsInRole("Admin"))
+                { @Html.ActionLink("Details", "Details", new { id = item.B_id }) }
+
+                @if (User.IsInRole("Admin"))
+                {@Html.ActionLink("Delete", "Delete", new { id = item.B_id }) <br />}*@
+
+
+               @if (!Request.IsAuthenticated) {
+                @Html.ActionLink("Book Ticket", "Login", "Account")}
+                                                                   
+                @if (Request.IsAuthenticated) {
+                    @Html.ActionLink("Book Ticket", "SeatInfo", new { id = item.B_id }) 
+                }
+
+
+
+
+            </td>
+        </tr>
+
+
+    }
+}
+    
+
+
+</table>
+
+
+
+
+
+
+

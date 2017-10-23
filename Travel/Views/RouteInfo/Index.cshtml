@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Travel.Models.Table_route>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+</head>
+
+<body>
+    <div>
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.S_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.D_id)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.S_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.D_id)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.R_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.R_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.R_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+  
+
+
+</body>
+</html>

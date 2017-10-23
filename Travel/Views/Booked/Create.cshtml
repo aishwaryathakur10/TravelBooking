@@ -1,0 +1,110 @@
+﻿@model Travel.Models.Table_booked
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@*<h2>Create</h2>*@
+
+
+
+<html>
+<head>
+    <title></title>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        /*h1 {
+            width: 60%;
+            margin: 100px auto 35px auto;
+        }*/
+    </style>
+
+</head>
+
+<body style="margin:30px">
+
+    
+    <p> Your User Id is:</p> <strong> @ViewBag.id </strong> 
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<p> Your id is : </p>*@
+
+
+        <h4>Please fill  the details to book the ticket :</h4>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Seat_No, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Seat_No)
+                @Html.ValidationMessageFor(model => model.Seat_No)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Book" class="btn btn-default" />
+            </div>
+        </div>
+
+
+
+    </div>
+    }
+
+    @*<div>
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Back to List", "Index")}
+
+        @if (!(User.IsInRole("Admin")))
+        {
+            <button id="book" class="button" onclick="@("window.location.href='" + @Url.Action("SeatInfo", "Detail") + "'");"> Back</button>}
+    </div>*@
+
+
+    @*<button id="book" class="button" onclick="@("window.location.href='" + @Url.Action("Confirmed", "Detail") + "'");"> Next </button>*@
+
+
+
+</body>
+
+
+</html>

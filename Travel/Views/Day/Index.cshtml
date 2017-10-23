@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Travel.Models.Table_day>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.A_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Table_route.R_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.A_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Table_route.R_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Day }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Day }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Day })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,34 @@
+﻿@model Travel.Models.Table_route
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Table_route</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.S_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.D_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.D_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.R_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
